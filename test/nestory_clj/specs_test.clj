@@ -1,11 +1,11 @@
-(ns nestory-clj.nest_api_test
+(ns nestory-clj.specs-test
   (:require [clojure.test :refer :all]
             [clojure.spec :as s]
-            [nestory-clj.nest-api :refer :all :as n]))
+            [nestory-clj.specs :refer :all :as n]))
 
 (deftest test-spec
   (testing "a nest api record has required properties"
-    (is (s/valid? :nestory-clj.nest-api/nest
+    (is (s/valid? :nestory-clj.specs/nest
        {:humidity 55
         :target-temperature 20
         :name "Living room"
@@ -18,7 +18,7 @@
         :time-to-target "~2h"
         :is-using-emergency-heat true})))
   (testing "weather record has the required properties"
-    (is (s/valid? :nestory-clj.nest-api/weather
+    (is (s/valid? :nestory-clj.specs/weather
       {:outside-temperature 34
        :outside-humidity 22
        :apparent-temperature 32.5
@@ -27,7 +27,7 @@
        :dew-point 9})))
        
   (testing "dynamo record contains all the required properties"
-    (is (s/valid? :nestory-clj.nest-api/dynamo-record
+    (is (s/valid? :nestory-clj.specs/dynamo-record
          {:outside-temperature 34
           :outside-humidity 22
           :apparent-temperature 32.5

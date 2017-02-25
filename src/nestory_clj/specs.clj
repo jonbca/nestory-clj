@@ -1,4 +1,4 @@
-(ns nestory-clj.nest-api
+(ns nestory-clj.specs
   (:require [clojure.spec :as s]))
 
 (s/def ::temperature number?)
