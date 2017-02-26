@@ -11,5 +11,6 @@
                  [mount "0.1.11"]
                  [camel-snake-kebab "0.4.0"]
                  [uswitch/lambada "0.1.2"]]
-  :profiles {:uberjar {:aot :all}}
+  :profiles {:uberjar {:aot :all}
+             :dev {:dependencies [[http-kit.fake "0.2.1"]]}}
   :uberjar-name "nestory-clj.jar")

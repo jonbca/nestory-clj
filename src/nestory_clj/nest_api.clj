@@ -1,4 +1,6 @@
-(ns nestory-clj.nest-api)
+(ns nestory-clj.nest-api
+  (:require [nestory-clj.config :refer [config]]
+            [org.httpkit.client :as http]))
 
 (defn- thermostat-property [body property]
   (-> body (get-in [:devices :thermostats]) vals first property))
@@ -20,3 +22,8 @@
      :heating-state (extract-thermostat-data :hvac-state)
      :time-to-target (extract-thermostat-data :time-to-target)
      :is-using-emergency-heat (extract-thermostat-data :is-using-emergency-heat)}))
+
+(defn get-nest-data!
+  ([] (get-nest-data! config))
+  ([{{url :url, api-key :api-key} :nest}]
+    @(http/get url {:oauth-token api-key})))

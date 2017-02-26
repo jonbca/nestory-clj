@@ -2,6 +2,7 @@
   (:require [cheshire.core :as json]
             [camel-snake-kebab.core :refer [->kebab-case-keyword]]
             [clojure.test :refer :all]
+            [org.httpkit.fake :refer [with-fake-http]]
             [nestory-clj.nest-api :refer :all]))
 
 (def sample-nest-api-response (-> "test/nestory_clj/nest-response.json" 
@@ -35,3 +36,9 @@
             :time-to-target "~0"
             :is-using-emergency-heat false} (nest-data sample-nest-api-response)))))
 
+(deftest nest-fetch-data
+  (testing "fetches data from nest api"
+    (with-fake-http [{:url "https://developer-api.nest.com"
+                      :method :get} "fake http response"]
+      (is (= (:body (get-nest-data! {:nest {:url "https://developer-api.nest.com"
+                                     :api-key "asdf"}})) "fake http response")))))
