@@ -13,7 +13,7 @@ compile:
 database:
   pre:
     - cd dynamodb
-    - java -Djava.library.path=./DynamoDBLocal_lib -jar DynamoDBLocal.jar -sharedDb:
+    - "java -Djava.library.path=./DynamoDBLocal_lib -jar DynamoDBLocal.jar -sharedDb":
       background: true
 test:
   override:
