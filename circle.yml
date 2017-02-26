@@ -7,4 +7,7 @@ compile:
     - cp target/nestory-clj.jar $CIRCLE_ARTIFACTS
 test:
   override:
+    - mkdir -p test2junit/xml
     - lein test2junit
+  post:
+    - cp -r test2junit/xml $CIRCLE_TEST_REPORTS/leiningen
