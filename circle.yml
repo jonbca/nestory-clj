@@ -12,7 +12,7 @@ compile:
 database:
   pre:
     - "java -Djava.library.path=~/dynamodb/DynamoDBLocal_lib -jar ~/dynamodb/DynamoDBLocal.jar -sharedDb":
-      background: true
+        background: true
 test:
   override:
     - mkdir -p test2junit/xml
