@@ -1,0 +1,10 @@
+machine:
+  java:
+    version: openjdk8
+compile:
+  post:
+    - lein uberjar
+    - cp target/nestory-clj.jar $CIRCLE_ARTIFACTS
+test:
+  override:
+    - lein test2junit

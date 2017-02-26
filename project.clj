@@ -12,5 +12,6 @@
                  [camel-snake-kebab "0.4.0"]
                  [uswitch/lambada "0.1.2"]]
   :profiles {:uberjar {:aot :all}
-             :dev {:dependencies [[http-kit.fake "0.2.1"]]}}
+             :dev {:dependencies [[http-kit.fake "0.2.1"]]
+             :plugins [[test2junit "1.2.5"]]}}
   :uberjar-name "nestory-clj.jar")
